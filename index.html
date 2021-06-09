@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIEW BASIC</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        {{person.name}} {{person.age}}
+
+        <!-- Method Call -->
+        {{nextYear('안녕하세요')}}
+        {{otherMethod()}}
+
+        <input :type="type" :value="inputData"><!-- inputData에 있는 값을 넣어줌  v-bind: (콜론만 넣어도 가능)-->
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            //Vue 인스턴스 생성
+            data : {
+                person : {
+                    name : 'co',
+                    age : 34
+                },
+                inputData: 'hello',
+                type: 'text', //text, number
+                link: 'https://www.youtube.com/kossiecoder'
+                
+                //변수
+            },
+            methods : {
+                //Method Create
+                nextYear : function(greeting) {
+                    return `${greeting} ! ${this.person.name} 는 ${this.person.age} 살`; 
+                },
+                otherMethod: function() {
+                    this.nextYear();
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
