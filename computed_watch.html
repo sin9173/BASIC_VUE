@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <button @click="changeMessage">Click</button>
+        {{ number + 1 }}<br>
+        {{ reversedMessage }}<br>
+        {{ reversedMessage }}<br>
+        {{ reversedMessage }}<br>
+        {{ message }}<br>
+        {{ updated }}
+        
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                number: 1,
+                message: '헬로우',
+                updated: '아니요'
+            },
+            methods: {//캐싱을 하지 않음
+                changeMessage() {
+                    this.message = '코지';
+                }
+            },
+            computed: { //캐싱을 함 (처음에 한번 계산되고 저장된 값을 사용)
+                reversedMessage() {
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            watch: {
+                message(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                    this.updated = '네';
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

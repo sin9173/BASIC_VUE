@@ -1,0 +1,5 @@
+#VIEW CLI 
+npm install -g @vue/cli
+
+
+vue create hello-word
