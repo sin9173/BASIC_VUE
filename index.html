@@ -17,6 +17,20 @@
         {{otherMethod()}}
 
         <input :type="type" :value="inputData"><!-- inputData에 있는 값을 넣어줌  v-bind: (콜론만 넣어도 가능)-->
+
+        <a :href="getKossieCoderLink('kossiecoder')">코지</a>
+
+        <button v-on:click="alert">Click Me</button>
+
+        {{year}}
+
+        <button v-on:click="plus">Plus</button>
+        <button v-on:click="minus">Minus</button>
+
+        <form v-on:submit.prevent="submit">
+            <input type="text"><br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
     <script>
         new Vue({
@@ -29,18 +43,36 @@
                 },
                 inputData: 'hello',
                 type: 'text', //text, number
-                link: 'https://www.youtube.com/kossiecoder'
+                link: 'https://www.youtube.com/',
+                year : 2018
                 
                 //변수
             },
             methods : {
                 //Method Create
+                getKossieCoderLink(channel) {
+                    return `${this.link}${channel}`;
+                },
                 nextYear : function(greeting) {
                     return `${greeting} ! ${this.person.name} 는 ${this.person.age} 살`; 
                 },
                 otherMethod: function() {
                     this.nextYear();
+                },
+                alert(){
+                    alert('Hello');
+                },
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                },
+                submit() {
+                    alert('submitted');
+                    console.log('submitted')
                 }
+
             }
         })
     </script>
